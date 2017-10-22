@@ -102,9 +102,9 @@ class MainActivity : AppCompatActivity() {
 
     abstract class ComplexInputFragment : BaseFragment() {
 
-        /** Get abs and abs part  */
+        /** Get real and abs part  */
         abstract val partA: Apfloat
-        /** Get rad, rad and rad part  */
+        /** Get imag, deg and rad part  */
         abstract val partB: Apfloat
         /** Get final complex number  */
         abstract val complex: Apcomplex
