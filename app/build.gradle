@@ -31,5 +31,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:26.1.0'
     compile 'com.google.android.gms:play-services-ads:11.4.0'
     compile 'org.apfloat:apfloat:1.8.3'
+    compile 'com.github.nao20010128nao:Wisecraft-PagerSlidingTabStrip:75dbfdc1ad'
     testCompile 'junit:junit:4.12'
 }
+//apply plugin: 'com.google.gms.google-services'
