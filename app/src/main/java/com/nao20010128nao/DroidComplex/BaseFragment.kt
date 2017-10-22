@@ -8,8 +8,8 @@ import android.view.*
  * Created by lesmi on 17/10/22.
  */
 abstract class BaseFragment : Fragment() {
-    fun <T : View> findViewById(@IdRes id: Int): T = view!!.findViewById(id)
-
     /** Get its title  */
     abstract val name: String
 }
+
+//inline fun <T : View> Fragment.findViewById(@IdRes id: Int): T = view!!.findViewById(id)

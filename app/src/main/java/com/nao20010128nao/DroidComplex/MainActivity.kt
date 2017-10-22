@@ -19,13 +19,14 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.toolbar))
         tabs=findViewById(R.id.tabs)
         pager=findViewById(R.id.pager)
-        tabs!!.setViewPager(pager!!)
 
         val adapter=UsefulPagerAdapter(supportFragmentManager)
         adapter.addTab(RealImagFragment())
         adapter.addTab(AbsDegFragment())
         adapter.addTab(AbsRadFragment())
         pager!!.adapter=adapter
+
+        tabs!!.setViewPager(pager!!)
     }
 
     class RealImagFragment : ComplexInputFragment() {
