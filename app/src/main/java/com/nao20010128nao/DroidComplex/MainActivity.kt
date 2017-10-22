@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
             get() = Apcomplex(partA,partB)
 
         override val name: String
-            get() = context!!.resources!!.getString(R.string.real_imag)
+            get() = nonNullContext.resources!!.getString(R.string.real_imag)
 
         override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
             val v = inflater!!.inflate(R.layout.complex_real_imag, container, false)
@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
             get() = partA.deg(partB)
 
         override val name: String
-            get() = context!!.resources!!.getString(R.string.abs_deg)
+            get() = nonNullContext.resources!!.getString(R.string.abs_deg)
 
         override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
             val v = inflater!!.inflate(R.layout.complex_abs_deg, container, false)
@@ -91,7 +91,7 @@ class MainActivity : AppCompatActivity() {
             get() = partA.rad(partB)
 
         override val name: String
-            get() = context!!.resources!!.getString(R.string.abs_rad)
+            get() = nonNullContext.resources!!.getString(R.string.abs_rad)
 
         override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
             val v = inflater!!.inflate(R.layout.complex_abs_rad, container, false)
