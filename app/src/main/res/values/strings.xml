@@ -1,3 +1,15 @@
 <resources>
-    <string name="app_name">DroidComplex</string>
+    <string name="app_name">Complex</string>
+    <string name="real">real</string>
+    <string name="imag">imag</string>
+    <string name="abs">abs</string>
+    <string name="deg">deg</string>
+    <string name="rad">rad</string>
+
+    <string name="real_imag">real/imag</string>
+    <string name="abs_deg">abs/deg</string>
+    <string name="abs_rad">abs/rad</string>
+
+    <string name="angle_char">∠</string>
+    <string name="plus_i">+ i</string>
 </resources>
