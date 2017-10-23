@@ -12,4 +12,14 @@
 
     <string name="angle_char">∠</string>
     <string name="plus_i">+ i</string>
+    <string name="calculate">Calculate</string>
+
+    <string name="real_part">REAL PART</string>
+    <string name="imag_part">IMAGINARY PART</string>
+    <string name="abs_value">ABSOLUTE</string>
+    <string name="angle_in_deg">ANGLE IN DEGREES</string>
+    <string name="angle_in_rad">ANGLE IN RADIANS</string>
+    <string name="angle_in_rad_div_pi">ANGLE IN RADIANS DIVIDED BY PI</string>
+
+    <string name="error">ERROR</string>
 </resources>

@@ -1,6 +1,9 @@
 package com.nao20010128nao.DroidComplex
 
 import android.support.v7.widget.Toolbar
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import android.text.Spanned
 import android.text.TextUtils
 import android.widget.TextView
 
@@ -39,4 +42,22 @@ fun Toolbar.titleTextView(): TextView? {
     } catch (e: IllegalArgumentException) {
     }
     return null
+}
+
+fun CharSequence.styled(vararg items: Any): CharSequence{
+    val sb= SpannableStringBuilder()
+    sb.append(this)
+    items.forEach {
+        sb.setSpan(it,0,sb.length,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+    }
+    return sb
+}
+
+fun CharSequence.combineSpanned(cs:List<CharSequence>): CharSequence{
+    val sb= SpannableStringBuilder()
+    sb.append(this)
+    cs.forEach {
+        sb.append(it)
+    }
+    return sb
 }
