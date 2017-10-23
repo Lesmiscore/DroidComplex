@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
         adapter.addTab(AbsRadPiFragment())
         pager!!.adapter = adapter
         tabs!!.setViewPager(pager!!)
-        currentValue = fun(): Apcomplex = (adapter.getItem(pager!!.currentItem) as ComplexInputFragment).complex
+        currentValue = {(adapter.getItem(pager!!.currentItem) as ComplexInputFragment).complex}
 
         adView!!.loadAd(AdRequest.Builder().build())
 
