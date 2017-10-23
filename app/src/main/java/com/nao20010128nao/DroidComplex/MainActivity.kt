@@ -3,6 +3,7 @@ package com.nao20010128nao.DroidComplex
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.view.ViewPager
+import android.support.v7.widget.Toolbar
 import android.view.*
 import android.widget.*
 
@@ -32,6 +33,13 @@ class MainActivity : AppCompatActivity() {
         tabs!!.setViewPager(pager!!)
 
         adView!!.loadAd(AdRequest.Builder().build())
+
+        runOnUiThread {
+            val titleView=(findViewById<Toolbar>(R.id.toolbar)!!).titleTextView()
+            if(titleView!=null){
+                titleView.gravity=Gravity.CENTER
+            }
+        }
     }
 
     class RealImagFragment : ComplexInputFragment() {
