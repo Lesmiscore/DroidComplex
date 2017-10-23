@@ -3,7 +3,6 @@ package com.nao20010128nao.DroidComplex
 import android.support.annotation.IdRes
 import android.support.v4.app.Fragment
 import android.support.v7.widget.Toolbar
-import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.text.TextUtils
