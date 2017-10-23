@@ -7,26 +7,31 @@ import android.view.*
 import android.widget.*
 
 import com.astuetz.*
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
 
 import org.apfloat.*
 
 class MainActivity : AppCompatActivity() {
     var tabs: PagerSlidingTabStrip? = null
     var pager: ViewPager? = null
+    var adView: AdView? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
         tabs=findViewById(R.id.tabs)
         pager=findViewById(R.id.pager)
+        adView=findViewById(R.id.adView)
 
         val adapter=UsefulPagerAdapter(supportFragmentManager)
         adapter.addTab(RealImagFragment())
         adapter.addTab(AbsDegFragment())
         adapter.addTab(AbsRadFragment())
         pager!!.adapter=adapter
-
         tabs!!.setViewPager(pager!!)
+
+        adView!!.loadAd(AdRequest.Builder().build())
     }
 
     class RealImagFragment : ComplexInputFragment() {
