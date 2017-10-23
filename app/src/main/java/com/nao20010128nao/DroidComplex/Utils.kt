@@ -9,6 +9,9 @@ import android.text.Spanned
 import android.text.TextUtils
 import android.view.View
 import android.widget.TextView
+import com.nao20010128nao.DroidComplex.MainActivity.Companion.DISPLAY_PRECISION
+import org.apfloat.Apfloat
+import java.math.RoundingMode
 
 /**
  * Created by lesmi on 17/10/23.
@@ -68,3 +71,6 @@ fun CharSequence.join(cs:List<CharSequence>): CharSequence{
 }
 
 inline fun <T : View> Fragment.findViewById(@IdRes id: Int): T = view!!.findViewById(id)
+
+inline fun Apfloat.toStringDisplay():String=
+        round(DISPLAY_PRECISION, RoundingMode.HALF_UP).precision(DISPLAY_PRECISION).toString(true)
