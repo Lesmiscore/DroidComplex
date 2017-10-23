@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">虚数</string>
+    <string name="real">実部</string>
+    <string name="imag">虚部</string>
+    <string name="abs">絶対値</string>
+    <string name="deg">角度</string>
+    <string name="rad">ラジアン</string>
+    <string name="rad_div_pi">ラジアン/π</string>
+
+    <string name="real_imag">実部/虚部</string>
+    <string name="abs_deg">絶対値/角度</string>
+    <string name="abs_rad">絶対値/ラジアン</string>
+    <string name="abs_rad_pi">絶対値/(ラジアン/π)π</string>
+
+    <string name="calculate">計算</string>
+
+    <string name="real_part">実部</string>
+    <string name="imag_part">虚部</string>
+    <string name="abs_value">絶対値</string>
+    <string name="angle_in_deg">度数法における角度</string>
+    <string name="angle_in_rad">ラジアンにおける角度</string>
+    <string name="angle_in_rad_div_pi">ラジアンにおける角度/π</string>
+
+    <string name="error">エラー</string>
+</resources>
