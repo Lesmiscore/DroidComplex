@@ -32,9 +32,9 @@ fun tan(x:Apfloat,y:Apfloat): Apfloat{
     when {
         x == Apfloat.ZERO && y == Apfloat.ZERO -> // no direction: assume 0
             return Apfloat.ZERO.precision(PRECISION)
-        x == Apfloat.ZERO -> // 0
+        y == Apfloat.ZERO -> // 0
             return Apfloat.ZERO.precision(PRECISION)
-        y == Apfloat.ZERO -> // 90
+        x == Apfloat.ZERO -> // 90
             return ApfloatMath.pi(PRECISION)/Apfloat(2).precision(PRECISION)
         else -> return ApfloatMath.tan(y / x)
     }
