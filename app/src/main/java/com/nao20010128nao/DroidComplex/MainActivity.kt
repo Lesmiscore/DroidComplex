@@ -111,7 +111,7 @@ class MainActivity : AppCompatActivity() {
             get() = Apcomplex(partA, partB)
 
         override val name: String
-            get() = nonNullContext().resources.getString(R.string.real_imag)
+            get() = nonNullContext.resources.getString(R.string.real_imag)
 
         override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
             real = findViewById(R.id.real)
@@ -136,7 +136,7 @@ class MainActivity : AppCompatActivity() {
             get() = partA.deg(partB)
 
         override val name: String
-            get() = nonNullContext().resources.getString(R.string.abs_deg)
+            get() = nonNullContext.resources.getString(R.string.abs_deg)
 
         override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
             abs = findViewById(R.id.abs)
@@ -161,7 +161,7 @@ class MainActivity : AppCompatActivity() {
             get() = partA.rad(partB)
 
         override val name: String
-            get() = nonNullContext().resources.getString(R.string.abs_rad)
+            get() = nonNullContext.resources.getString(R.string.abs_rad)
 
         override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
             abs = findViewById(R.id.abs)
@@ -186,7 +186,7 @@ class MainActivity : AppCompatActivity() {
             get() = partA.rad(partB*CALC_PI)
 
         override val name: String
-            get() = nonNullContext().resources.getString(R.string.abs_rad_pi)
+            get() = nonNullContext.resources.getString(R.string.abs_rad_pi)
 
         override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
             abs = findViewById(R.id.abs)
