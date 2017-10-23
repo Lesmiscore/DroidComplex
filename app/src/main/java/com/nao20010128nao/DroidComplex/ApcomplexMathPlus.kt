@@ -29,19 +29,15 @@ inline fun Apfloat.round(precision:Long,mode: RoundingMode): Apfloat=ApfloatMath
 
 /** Zero-proof tangent calculator */
 fun tan(x:Apfloat,y:Apfloat): Apfloat{
-    if(x == Apfloat.ZERO && y == Apfloat.ZERO){
-        // no direction: assume 0
-        return Apfloat.ZERO.precision(PRECISION)
+    when {
+        x == Apfloat.ZERO && y == Apfloat.ZERO -> // no direction: assume 0
+            return Apfloat.ZERO.precision(PRECISION)
+        x == Apfloat.ZERO -> // 0
+            return Apfloat.ZERO.precision(PRECISION)
+        y == Apfloat.ZERO -> // 90
+            return ApfloatMath.pi(PRECISION)/Apfloat(2).precision(PRECISION)
+        else -> return ApfloatMath.tan(y / x)
     }
-    if(x == Apfloat.ZERO){
-        // 0
-        return Apfloat.ZERO.precision(PRECISION)
-    }
-    if(y == Apfloat.ZERO){
-        // 90
-        return ApfloatMath.pi(PRECISION)/Apfloat(2).precision(PRECISION)
-    }
-    return ApfloatMath.tan(y/x)
 }
 
 fun tan(p:Apcomplex):Apfloat = tan(p.real(),p.imag())
