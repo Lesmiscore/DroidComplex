@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'proguard-patch'
 
 android {
     compileSdkVersion 26
@@ -16,7 +15,7 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles 'proguard-rules.pro'
             resValue "string","admobUnitId","ca-app-pub-8798818728737177/1054957491"
         }
@@ -34,10 +33,9 @@ dependencies {
     compile 'com.google.android.gms:play-services-ads:11.4.0'
     compile 'org.apfloat:apfloat:1.8.3'
     compile 'com.github.nao20010128nao:Wisecraft-PagerSlidingTabStrip:75dbfdc1ad'
-    testCompile 'junit:junit:4.12'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    testCompile 'junit:junit:4.12'
 }
 repositories {
     mavenCentral()
 }
-//apply plugin: 'com.google.gms.google-services'

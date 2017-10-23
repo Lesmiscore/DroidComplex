@@ -1,3 +1,5 @@
+-dontoptimize
+
 -keepnames public !abstract class * extends android.app.Activity
 -keepnames public !abstract class * extends android.app.Service
 -keepnames public !abstract class * extends android.content.BroadcastReceiver
@@ -31,6 +33,7 @@
 -dontwarn org.w3c.dom.**
 -dontwarn android.**
 -dontwarn javax.lang.model.element.Modifier
+-dontwarn java.lang.management.**
 
 -keepattributes InnerClasses,EnclosingMethod
 
