@@ -15,4 +15,3 @@ abstract class BaseFragment : Fragment() {
     val nonNullContext: Context=context?:TheApplication.instance.get()!!
 }
 
-//inline fun <T : View> Fragment.findViewById(@IdRes id: Int): T = view!!.findViewById(id)

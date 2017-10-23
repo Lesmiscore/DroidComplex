@@ -1,10 +1,13 @@
 package com.nao20010128nao.DroidComplex
 
+import android.support.annotation.IdRes
+import android.support.v4.app.Fragment
 import android.support.v7.widget.Toolbar
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.text.TextUtils
+import android.view.View
 import android.widget.TextView
 
 /**
@@ -51,7 +54,7 @@ fun CharSequence.styled(vararg items: Any): CharSequence{
     return sb
 }
 
-fun CharSequence.join(vararg cs:CharSequence):CharSequence = this.join(cs.toList())
+inline fun CharSequence.join(vararg cs:CharSequence):CharSequence = this.join(cs.toList())
 
 fun CharSequence.join(cs:List<CharSequence>): CharSequence{
     val sb= SpannableStringBuilder()
@@ -63,3 +66,5 @@ fun CharSequence.join(cs:List<CharSequence>): CharSequence{
     }
     return sb
 }
+
+inline fun <T : View> Fragment.findViewById(@IdRes id: Int): T = view!!.findViewById(id)

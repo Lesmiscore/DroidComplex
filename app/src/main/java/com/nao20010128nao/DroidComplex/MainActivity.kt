@@ -112,12 +112,13 @@ class MainActivity : AppCompatActivity() {
         override val name: String
             get() = nonNullContext.resources.getString(R.string.real_imag)
 
-        override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-            val v = inflater!!.inflate(R.layout.complex_real_imag, container, false)
-            real = v.findViewById(R.id.real)
-            imag = v.findViewById(R.id.imag)
-            return v
+        override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+            real = findViewById(R.id.real)
+            imag = findViewById(R.id.imag)
         }
+
+        override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+                inflater!!.inflate(R.layout.complex_real_imag, container, false)
     }
 
     class AbsDegFragment : ComplexInputFragment() {
@@ -136,12 +137,13 @@ class MainActivity : AppCompatActivity() {
         override val name: String
             get() = nonNullContext.resources.getString(R.string.abs_deg)
 
-        override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-            val v = inflater!!.inflate(R.layout.complex_abs_deg, container, false)
-            abs = v.findViewById(R.id.abs)
-            deg = v.findViewById(R.id.deg)
-            return v
+        override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+            abs = findViewById(R.id.abs)
+            deg = findViewById(R.id.deg)
         }
+
+        override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+                inflater!!.inflate(R.layout.complex_abs_deg, container, false)
     }
 
     class AbsRadFragment : ComplexInputFragment() {
@@ -160,12 +162,13 @@ class MainActivity : AppCompatActivity() {
         override val name: String
             get() = nonNullContext.resources.getString(R.string.abs_rad)
 
-        override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-            val v = inflater!!.inflate(R.layout.complex_abs_rad, container, false)
-            abs = v.findViewById(R.id.abs)
-            rad = v.findViewById(R.id.rad)
-            return v
+        override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+            abs = findViewById(R.id.abs)
+            rad = findViewById(R.id.rad)
         }
+
+        override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+                inflater!!.inflate(R.layout.complex_abs_rad, container, false)
     }
 
     abstract class ComplexInputFragment : BaseFragment() {
