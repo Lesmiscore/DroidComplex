@@ -53,10 +53,12 @@ fun CharSequence.styled(vararg items: Any): CharSequence{
     return sb
 }
 
-fun CharSequence.combineSpanned(cs:List<CharSequence>): CharSequence{
+fun CharSequence.join(cs:List<CharSequence>): CharSequence{
     val sb= SpannableStringBuilder()
-    sb.append(this)
-    cs.forEach {
+    cs.forEachIndexed {index,it->
+        if(index!=0){
+            sb.append(this)
+        }
         sb.append(it)
     }
     return sb

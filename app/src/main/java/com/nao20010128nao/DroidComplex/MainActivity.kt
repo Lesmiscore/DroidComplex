@@ -68,6 +68,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun calculate() {
         val complex = currentValue!!()
+        val tangent= tan(complex)
         val components: MutableList<CharSequence> = ArrayList()
         components += (resources.getString(R.string.real_part) + ": ").styled(StyleSpan(Typeface.BOLD_ITALIC), ForegroundColorSpan(Color.WHITE))
         components += complex.real().round(DISPLAY_PRECISION, RoundingMode.HALF_UP).toString(true)
@@ -79,12 +80,15 @@ class MainActivity : AppCompatActivity() {
         components += ApcomplexMath.abs(complex).round(DISPLAY_PRECISION, RoundingMode.HALF_UP).toString(true)
         components += "\n"
         components += (resources.getString(R.string.angle_in_deg) + ": ").styled(StyleSpan(Typeface.BOLD_ITALIC), ForegroundColorSpan(Color.WHITE))
-        components += ApfloatMath.toDegrees(tan(complex)).round(DISPLAY_PRECISION, RoundingMode.HALF_UP).toString(true)
+        components += ApfloatMath.toDegrees(tangent).round(DISPLAY_PRECISION, RoundingMode.HALF_UP).toString(true)
         components += "\n"
         components += (resources.getString(R.string.angle_in_rad) + ": ").styled(StyleSpan(Typeface.BOLD_ITALIC), ForegroundColorSpan(Color.WHITE))
-        components += tan(complex).round(DISPLAY_PRECISION, RoundingMode.HALF_UP).toString(true)
+        components += tangent.round(DISPLAY_PRECISION, RoundingMode.HALF_UP).toString(true)
         components += "\n"
-        result!!.text = "".combineSpanned(components)
+        components += (resources.getString(R.string.angle_in_rad_div_pi) + ": ").styled(StyleSpan(Typeface.BOLD_ITALIC), ForegroundColorSpan(Color.WHITE))
+        components += (tangent/ApfloatMath.pi(PRECISION)).round(DISPLAY_PRECISION, RoundingMode.HALF_UP).toString(true)
+        components += "\n"
+        result!!.text = "".join(components)
     }
 
     class RealImagFragment : ComplexInputFragment() {
