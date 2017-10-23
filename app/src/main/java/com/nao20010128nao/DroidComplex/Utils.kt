@@ -27,12 +27,10 @@ fun Toolbar.titleTextView(): TextView? {
         for (i in 0 until childCount) {
             val v = getChildAt(i)
             if (v is TextView) {
-                val lp = v.getLayoutParams()
+                val lp = v.layoutParams
                 val viewType = f.get(lp) as Int
-                if (viewType == 1) {
-                    if (v.text == title) {
-                        return v
-                    }
+                if (viewType == 1 && v.text == title) {
+                    return v
                 }
             }
         }
