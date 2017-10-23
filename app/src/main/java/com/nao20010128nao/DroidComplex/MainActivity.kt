@@ -16,6 +16,8 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 
 import org.apfloat.*
+import java.io.PrintWriter
+import java.io.StringWriter
 import java.math.RoundingMode
 
 class MainActivity : AppCompatActivity() {
@@ -54,12 +56,15 @@ class MainActivity : AppCompatActivity() {
             try {
                 calculate()
             } catch (e: Throwable) {
-                result!!.text = resources.getString(R.string.error).styled(ForegroundColorSpan(Color.RED), StyleSpan(Typeface.BOLD))
+                result!!.text = "\n".join(
+                        resources.getString(R.string.error),
+                        StringWriter().apply { e.printStackTrace(PrintWriter(this)) }.toString()
+                ).styled(ForegroundColorSpan(Color.RED), StyleSpan(Typeface.BOLD))
             }
         }
 
         runOnUiThread {
-            val titleView = (findViewById<Toolbar>(R.id.toolbar)!!).titleTextView()
+            val titleView = findViewById<Toolbar>(R.id.toolbar)!!.titleTextView()
             if (titleView != null) {
                 titleView.gravity = Gravity.CENTER
             }
@@ -80,7 +85,7 @@ class MainActivity : AppCompatActivity() {
         components += ApcomplexMath.abs(complex).round(DISPLAY_PRECISION, RoundingMode.HALF_UP).toString(true)
         components += "\n"
         components += (resources.getString(R.string.angle_in_deg) + ": ").styled(StyleSpan(Typeface.BOLD_ITALIC), ForegroundColorSpan(Color.WHITE))
-        components += ApfloatMath.toDegrees(tangent).round(DISPLAY_PRECISION, RoundingMode.HALF_UP).toString(true)
+        components += toDeg(tangent).round(DISPLAY_PRECISION, RoundingMode.HALF_UP).toString(true)
         components += "\n"
         components += (resources.getString(R.string.angle_in_rad) + ": ").styled(StyleSpan(Typeface.BOLD_ITALIC), ForegroundColorSpan(Color.WHITE))
         components += tangent.round(DISPLAY_PRECISION, RoundingMode.HALF_UP).toString(true)

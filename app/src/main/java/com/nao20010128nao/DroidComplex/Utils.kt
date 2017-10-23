@@ -51,6 +51,8 @@ fun CharSequence.styled(vararg items: Any): CharSequence{
     return sb
 }
 
+fun CharSequence.join(vararg cs:CharSequence):CharSequence = this.join(cs.toList())
+
 fun CharSequence.join(cs:List<CharSequence>): CharSequence{
     val sb= SpannableStringBuilder()
     cs.forEachIndexed {index,it->
