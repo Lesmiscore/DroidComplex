@@ -6,6 +6,7 @@ import org.apfloat.ApfloatMath
 import java.math.RoundingMode
 
 const val PRECISION:Long = 100
+val CALC_PI:Apfloat = ApfloatMath.pi(PRECISION)
 
 /**
  * Makes Apcomplex by giving degrees to Apfloat
@@ -34,7 +35,7 @@ fun tan(x:Apfloat,y:Apfloat): Apfloat = when {
     y == Apfloat.ZERO -> // 0
         Apfloat.ZERO.precision(PRECISION)
     x == Apfloat.ZERO -> // 90
-        ApfloatMath.pi(PRECISION)/Apfloat(2).precision(PRECISION)
+        CALC_PI/Apfloat(2).precision(PRECISION)
     else -> ApfloatMath.atan(y / x)
 }
 

@@ -46,6 +46,7 @@ class MainActivity : AppCompatActivity() {
         adapter.addTab(RealImagFragment())
         adapter.addTab(AbsDegFragment())
         adapter.addTab(AbsRadFragment())
+        adapter.addTab(AbsRadPiFragment())
         pager!!.adapter = adapter
         tabs!!.setViewPager(pager!!)
         currentValue = fun(): Apcomplex = (adapter.getItem(pager!!.currentItem) as ComplexInputFragment).complex
@@ -91,7 +92,7 @@ class MainActivity : AppCompatActivity() {
         components += tangent.round(DISPLAY_PRECISION, RoundingMode.HALF_UP).toString(true)
         components += "\n"
         components += (resources.getString(R.string.angle_in_rad_div_pi) + ": ").styled(StyleSpan(Typeface.BOLD_ITALIC), ForegroundColorSpan(Color.WHITE))
-        components += (tangent/ApfloatMath.pi(PRECISION)).round(DISPLAY_PRECISION, RoundingMode.HALF_UP).toString(true)
+        components += (tangent/ CALC_PI).round(DISPLAY_PRECISION, RoundingMode.HALF_UP).toString(true)
         components += "\n"
         result!!.text = "".join(components)
     }
@@ -169,6 +170,31 @@ class MainActivity : AppCompatActivity() {
 
         override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? =
                 inflater!!.inflate(R.layout.complex_abs_rad, container, false)
+    }
+
+    class AbsRadPiFragment : ComplexInputFragment() {
+        var abs: EditText? = null
+        var rad: EditText? = null
+
+        override val partA: Apfloat
+            get() = Apfloat(abs!!.text!!.toString()).precision(PRECISION)
+
+        override val partB: Apfloat
+            get() = Apfloat(rad!!.text!!.toString()).precision(PRECISION)
+
+        override val complex: Apcomplex
+            get() = partA.rad(partB*CALC_PI)
+
+        override val name: String
+            get() = nonNullContext.resources.getString(R.string.abs_rad_pi)
+
+        override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+            abs = findViewById(R.id.abs)
+            rad = findViewById(R.id.rad)
+        }
+
+        override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+                inflater!!.inflate(R.layout.complex_abs_rad_pi, container, false)
     }
 
     abstract class ComplexInputFragment : BaseFragment() {

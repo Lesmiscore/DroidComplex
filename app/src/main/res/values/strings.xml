@@ -5,13 +5,16 @@
     <string name="abs">abs</string>
     <string name="deg">deg</string>
     <string name="rad">rad</string>
+    <string name="rad_div_pi">rad/π</string>
 
     <string name="real_imag">real/imag</string>
     <string name="abs_deg">abs/deg</string>
     <string name="abs_rad">abs/rad</string>
+    <string name="abs_rad_pi">abs/(rad/π)π</string>
 
     <string name="angle_char">∠</string>
     <string name="plus_i">+ i</string>
+    <string name="pi_char">π</string>
     <string name="calculate">Calculate</string>
 
     <string name="real_part">REAL PART</string>
