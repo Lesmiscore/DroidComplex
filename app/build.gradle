@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'proguard-patch'
 
 android {
     compileSdkVersion 26
@@ -16,7 +17,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles 'proguard-rules.pro'
             resValue "string","admobUnitId","ca-app-pub-8798818728737177/1054957491"
         }
     }

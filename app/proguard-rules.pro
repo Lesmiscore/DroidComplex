@@ -1,25 +1,44 @@
-# Add project specific ProGuard rules here.
-# By default, the flags in this file are appended to flags specified
-# in /home/lesmi/android-sdk-linux/tools/proguard/proguard-android.txt
-# You can edit the include path and order by changing the proguardFiles
-# directive in build.gradle.
-#
-# For more details, see
-#   http://developer.android.com/guide/developing/tools/proguard.html
+-keepnames public !abstract class * extends android.app.Activity
+-keepnames public !abstract class * extends android.app.Service
+-keepnames public !abstract class * extends android.content.BroadcastReceiver
+-dontwarn com.google.common.**
+-dontwarn com.google.appengine.**
+-dontwarn com.google.android.gms.**
+-dontwarn com.google.api.client.**
+-assumenosideeffects class android.util.Log {
+    *;
+}
+-keepnames class * implements android.os.Parcelable {
+    public static final android.os.Parcelable$Creator *;
+}
+-keepnames public !abstract class * extends android.view.View {
+    public <init>(...);
+}
+-keepattributes Signature
+-keepattributes *Annotation*
+-keep class sun.misc.Unsafe { *; }
+-dontwarn org.apache.**
+-keep class uk.co.chrisjenx.calligraphy.** { *; }
+-keep class android.support.** { *; }
+-keep class android.support.v4.os.CancellationSignal { *; }
 
-# Add any project specific keep options here:
+-keep class com.firebase.** { *; }
+-keepnames class org.apache.** { *; }
+-keepnames class com.fasterxml.jackson.** { *; }
+-keepnames class javax.servlet.** { *; }
+-keepnames class org.ietf.jgss.** { *; }
+-dontwarn org.apache.**
+-dontwarn org.w3c.dom.**
+-dontwarn android.**
+-dontwarn javax.lang.model.element.Modifier
 
-# If your project uses WebView with JS, uncomment the following
-# and specify the fully qualified class name to the JavaScript interface
-# class:
-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
-#   public *;
-#}
+-keepattributes InnerClasses,EnclosingMethod
 
-# Uncomment this to preserve the line number information for
-# debugging stack traces.
-#-keepattributes SourceFile,LineNumberTable
+-keepclassmembers public enum * { *; }
 
-# If you keep the line number information, uncomment this to
-# hide the original source file name.
-#-renamesourcefileattribute SourceFile
+-repackageclasses droidcomplex
+
+-allowaccessmodification
+-optimizationpasses 10
+
+-useuniqueclassmembernames
