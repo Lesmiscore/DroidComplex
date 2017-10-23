@@ -12,6 +12,5 @@ abstract class BaseFragment : Fragment() {
     /** Get its title  */
     abstract val name: String
 
-    val nonNullContext: Context=context?:TheApplication.instance.get()!!
+    fun nonNullContext(): Context=context?:activity?:TheApplication.instance.get()!!
 }
-
