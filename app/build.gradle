@@ -1,14 +1,22 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
+def haveSignInfo=({
+    try {
+        haveSignInfo
+    }catch (Throwable e){
+        !e
+    }
+})()
+
 android {
     signingConfigs {
-        if(gradle.properties.haveSignInfo) {
-            relese {
-                keyAlias gradle.properties.keyAlias
-                keyPassword gradle.properties.keyPassword
-                storeFile file(gradle.properties.storeFile)
-                storePassword gradle.properties.storePassword
+        if(haveSignInfo) {
+            release {
+                keyAlias propKeyAlias
+                keyPassword propKeyPassword
+                storeFile file(propStoreFile)
+                storePassword propStorePassword
             }
         }
     }
@@ -28,7 +36,7 @@ android {
             minifyEnabled true
             proguardFiles 'proguard-rules.pro'
             resValue "string", "admobUnitId", "ca-app-pub-8798818728737177/1054957491"
-            if(gradle.properties.haveSignInfo) {
+            if(haveSignInfo) {
                 signingConfig signingConfigs.release
             }
         }
