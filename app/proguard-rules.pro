@@ -7,9 +7,7 @@
 -dontwarn com.google.appengine.**
 -dontwarn com.google.android.gms.**
 -dontwarn com.google.api.client.**
--assumenosideeffects class android.util.Log {
-    *;
-}
+-assumenosideeffects class android.util.Log { *; }
 -keepnames class * implements android.os.Parcelable {
     public static final android.os.Parcelable$Creator *;
 }
@@ -18,7 +16,7 @@
 }
 -keepattributes Signature
 -keepattributes *Annotation*
--keep class sun.misc.Unsafe { *; }
+-dontwarn sun.misc.Unsafe
 -dontwarn org.apache.**
 -keep class uk.co.chrisjenx.calligraphy.** { *; }
 -keep class android.support.** { *; }
@@ -41,7 +39,4 @@
 
 -repackageclasses droidcomplex
 
--allowaccessmodification
--optimizationpasses 10
-
--useuniqueclassmembernames
+-keep class org.apfloat.** { *; }
