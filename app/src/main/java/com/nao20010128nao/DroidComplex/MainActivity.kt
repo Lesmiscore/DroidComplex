@@ -60,10 +60,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         runOnUiThread {
-            val titleView = findViewById<Toolbar>(R.id.toolbar)!!.titleTextView()
-            if (titleView != null) {
-                titleView.gravity = Gravity.CENTER
-            }
+            findViewById<Toolbar>(R.id.toolbar)!!.titleTextView()?.gravity = Gravity.CENTER
         }
     }
 
