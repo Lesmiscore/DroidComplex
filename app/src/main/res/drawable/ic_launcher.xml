@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:drawable="@color/black"
+        android:top="0px"
+        android:bottom="0px"
+        android:left="0px"
+        android:right="0px"/>
+    <item
+        android:drawable="@mipmap/ic_launcher_i"
+        android:top="0px"
+        android:bottom="0px"
+        android:left="0px"
+        android:right="0px"/>
+</layer-list>
