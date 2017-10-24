@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">虚数</string>
+    <string name="app_name">複素数</string>
     <string name="real">実部</string>
     <string name="imag">虚部</string>
     <string name="abs">絶対値</string>
