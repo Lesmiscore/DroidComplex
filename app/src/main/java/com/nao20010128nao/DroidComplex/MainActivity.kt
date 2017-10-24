@@ -56,14 +56,7 @@ class MainActivity : AppCompatActivity() {
         adView!!.loadAd(AdRequest.Builder().build())
 
         calc!!.setOnClickListener {
-            try {
-                calculate()
-            } catch (e: Throwable) {
-                result!!.text = "\n".join(
-                        resources.getString(R.string.error),
-                        StringWriter().apply { e.printStackTrace(PrintWriter(this)) }.toString()
-                ).styled(ForegroundColorSpan(Color.RED), StyleSpan(Typeface.BOLD))
-            }
+            calculate()
         }
 
         runOnUiThread {
@@ -91,28 +84,35 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun calculate() {
-        val complex = currentValue!!()
-        val tangent= tan(complex)
-        val components: MutableList<CharSequence> = ArrayList()
-        components += (resources.getString(R.string.real_part) + ": ").styled(StyleSpan(Typeface.BOLD_ITALIC), ForegroundColorSpan(Color.WHITE))
-        components += complex.real().toStringDisplay()
-        components += "\n"
-        components += (resources.getString(R.string.imag_part) + ": ").styled(StyleSpan(Typeface.BOLD_ITALIC), ForegroundColorSpan(Color.WHITE))
-        components += complex.imag().toStringDisplay()
-        components += "\n"
-        components += (resources.getString(R.string.abs_value) + ": ").styled(StyleSpan(Typeface.BOLD_ITALIC), ForegroundColorSpan(Color.WHITE))
-        components += ApcomplexMath.abs(complex).toStringDisplay()
-        components += "\n"
-        components += (resources.getString(R.string.angle_in_deg) + ": ").styled(StyleSpan(Typeface.BOLD_ITALIC), ForegroundColorSpan(Color.WHITE))
-        components += toDeg(tangent).toStringDisplay()
-        components += "\n"
-        components += (resources.getString(R.string.angle_in_rad) + ": ").styled(StyleSpan(Typeface.BOLD_ITALIC), ForegroundColorSpan(Color.WHITE))
-        components += tangent.toStringDisplay()
-        components += "\n"
-        components += (resources.getString(R.string.angle_in_rad_div_pi) + ": ").styled(StyleSpan(Typeface.BOLD_ITALIC), ForegroundColorSpan(Color.WHITE))
-        components += (tangent/ CALC_PI).toStringDisplay()
-        components += "\n"
-        result!!.text = "".join(components)
+        result!!.text = try {
+            val complex = currentValue!!()
+            val tangent= tan(complex)
+            val components: MutableList<CharSequence> = ArrayList()
+            components += (resources.getString(R.string.real_part) + ": ").styled(StyleSpan(Typeface.BOLD_ITALIC), ForegroundColorSpan(Color.WHITE))
+            components += complex.real().toStringDisplay()
+            components += "\n"
+            components += (resources.getString(R.string.imag_part) + ": ").styled(StyleSpan(Typeface.BOLD_ITALIC), ForegroundColorSpan(Color.WHITE))
+            components += complex.imag().toStringDisplay()
+            components += "\n"
+            components += (resources.getString(R.string.abs_value) + ": ").styled(StyleSpan(Typeface.BOLD_ITALIC), ForegroundColorSpan(Color.WHITE))
+            components += ApcomplexMath.abs(complex).toStringDisplay()
+            components += "\n"
+            components += (resources.getString(R.string.angle_in_deg) + ": ").styled(StyleSpan(Typeface.BOLD_ITALIC), ForegroundColorSpan(Color.WHITE))
+            components += toDeg(tangent).toStringDisplay()
+            components += "\n"
+            components += (resources.getString(R.string.angle_in_rad) + ": ").styled(StyleSpan(Typeface.BOLD_ITALIC), ForegroundColorSpan(Color.WHITE))
+            components += tangent.toStringDisplay()
+            components += "\n"
+            components += (resources.getString(R.string.angle_in_rad_div_pi) + ": ").styled(StyleSpan(Typeface.BOLD_ITALIC), ForegroundColorSpan(Color.WHITE))
+            components += (tangent/ CALC_PI).toStringDisplay()
+            components += "\n"
+            "".join(components)
+        } catch (e: Throwable) {
+            "\n".join(
+                    resources.getString(R.string.error),
+                    StringWriter().apply { e.printStackTrace(PrintWriter(this)) }.toString()
+            ).styled(ForegroundColorSpan(Color.RED), StyleSpan(Typeface.BOLD))
+        }
     }
 
     class RealImagFragment : ComplexInputFragment() {
