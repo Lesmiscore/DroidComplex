@@ -9,6 +9,7 @@ import android.text.TextUtils
 import android.view.View
 import android.widget.TextView
 import com.nao20010128nao.DroidComplex.MainActivity.Companion.DISPLAY_PRECISION
+import org.apfloat.Apcomplex
 import org.apfloat.Apfloat
 import java.math.RoundingMode
 
@@ -72,4 +73,22 @@ fun CharSequence.join(cs:List<CharSequence>): CharSequence{
 inline fun <T : View> Fragment.findViewById(@IdRes id: Int): T = view!!.findViewById(id)
 
 inline fun Apfloat.toStringDisplay():String=
-        round(DISPLAY_PRECISION, RoundingMode.HALF_UP).precision(DISPLAY_PRECISION).toString(true)
+        round(DISPLAY_PRECISION, RoundingMode.HALF_UP)
+                .cutDownTo(DISPLAY_PRECISION.toInt())
+                .toString(true)
+
+fun Apfloat.cutDownTo(digits: Int = 10):Apfloat{
+    val str=toString(true)
+    /* before dot + dot + digits
+     * example: -1234.5678 digits = 3
+     * -> -1234.567
+     * before dot = 5
+     * total = 9
+     */
+    val maxCharCount=str.split(".").first().length+1+digits
+    return when {
+        str.matches("0*\\.0+".toRegex()) -> Apcomplex.ZERO
+        str.length > maxCharCount -> Apfloat(str.substring(0,maxCharCount))
+        else -> this
+    }
+}
