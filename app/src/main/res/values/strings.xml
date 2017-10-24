@@ -25,4 +25,5 @@
     <string name="angle_in_rad_div_pi">ANGLE IN RADIANS DIVIDED BY PI</string>
 
     <string name="error">ERROR</string>
+    <string name="menu_look_code">Look at source code</string>
 </resources>

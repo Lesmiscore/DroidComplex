@@ -22,4 +22,5 @@
     <string name="angle_in_rad_div_pi">ラジアンにおける角度/π</string>
 
     <string name="error">エラー</string>
+    <string name="menu_look_code">ソースコードを見に行く</string>
 </resources>

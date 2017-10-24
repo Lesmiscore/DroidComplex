@@ -1,7 +1,9 @@
 package com.nao20010128nao.DroidComplex
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
+import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.view.ViewPager
@@ -70,6 +72,22 @@ class MainActivity : AppCompatActivity() {
                 titleView.gravity = Gravity.CENTER
             }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menu!!.add(0,0,0,R.string.menu_look_code)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean = when (item!!.itemId){
+        0-> true.also{
+            startActivity(Intent.createChooser(Intent()
+                    .setData(Uri.parse("https://github.com/nao20010128nao/DroidComplex/"))
+                    .setAction(Intent.ACTION_VIEW)
+                    .addCategory(Intent.CATEGORY_DEFAULT)
+                    ,resources.getString(R.string.menu_look_code)))
+        }
+        else -> false
     }
 
     private fun calculate() {
