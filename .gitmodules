@@ -1,0 +1,4 @@
+[submodule "interpreter"]
+	path = interpreter
+	url = https://github.com/nao20010128nao/DroidComplex-Interpreter.git
+
