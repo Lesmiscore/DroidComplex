@@ -55,6 +55,6 @@ dependencies {
     compile 'org.apfloat:apfloat:1.8.3'
     compile 'com.github.nao20010128nao:Wisecraft-PagerSlidingTabStrip:75dbfdc1ad'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    compile "com.github.nao20010128nao:DroidComplex:$current_commit"
+    compile "com.github.nao20010128nao:DroidComplex-Interpreter:$interpreter_commit"
     testCompile 'junit:junit:4.12'
 }

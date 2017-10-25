@@ -2,7 +2,7 @@
 
 buildscript {
     ext.kotlin_version = '1.1.51'
-    ext.current_commit = ['git','rev-parse','HEAD','--short'].execute().in.text.trim()
+    ext.interpreter_commit = ['git','rev-parse','HEAD','--short'].execute(null,new File(rootDir,'interpreter')).in.text.trim()
     repositories {
         jcenter()
         maven { url 'https://jitpack.io' }
