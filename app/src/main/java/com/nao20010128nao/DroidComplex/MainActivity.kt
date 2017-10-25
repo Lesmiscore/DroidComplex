@@ -20,7 +20,6 @@ import com.google.android.gms.ads.AdView
 import org.apfloat.*
 import java.io.PrintWriter
 import java.io.StringWriter
-import java.math.RoundingMode
 
 class MainActivity : AppCompatActivity() {
     companion object{
@@ -83,7 +82,7 @@ class MainActivity : AppCompatActivity() {
     private fun calculate() {
         result!!.text = try {
             val complex = currentValue!!()
-            val tangent= tan(complex)
+            val tangent= atan(complex)
             val components: MutableList<CharSequence> = ArrayList()
             components += (resources.getString(R.string.real_part) + ": ").styled(StyleSpan(Typeface.BOLD_ITALIC), ForegroundColorSpan(Color.WHITE))
             components += complex.real().toStringDisplay()

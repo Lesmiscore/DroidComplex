@@ -28,8 +28,8 @@ inline operator fun Apfloat.div(a:Apfloat): Apfloat = this.divide(a)
 
 inline fun Apfloat.round(precision:Long,mode: RoundingMode): Apfloat=ApfloatMath.round(this,precision,mode)
 
-/** Zero-proof tangent function */
-fun tan(x:Apfloat,y:Apfloat): Apfloat = when {
+/** Zero-proof arc-tangent function */
+fun atan(x:Apfloat, y:Apfloat): Apfloat = when {
     x == Apfloat.ZERO && y == Apfloat.ZERO -> // no direction: assume 0
         Apfloat.ZERO.precision(PRECISION)
     y == Apfloat.ZERO -> // 0
@@ -51,4 +51,4 @@ fun toRad(r:Apfloat):Apfloat = when (r) {
     else -> ApfloatMath.toRadians(r)
 }
 
-fun tan(p:Apcomplex):Apfloat = tan(p.real(),p.imag())
+fun atan(p:Apcomplex):Apfloat = atan(p.real(),p.imag())
