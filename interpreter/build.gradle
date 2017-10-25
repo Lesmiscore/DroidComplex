@@ -1,0 +1,10 @@
+apply plugin: 'java'
+apply plugin: 'groovy'
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'org.codehaus.groovy:groovy:2.4.12:grooid'
+}
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"
