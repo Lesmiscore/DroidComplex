@@ -1,1 +1,4 @@
-include ':app', ':interpreter'
+if(!(System.env.JITPACK||System.env.CI)) {
+    include ':app'
+}
+include ':interpreter'
