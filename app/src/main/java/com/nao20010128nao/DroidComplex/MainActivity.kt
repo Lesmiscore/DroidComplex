@@ -81,6 +81,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun calculate() {
+        calc!!.isEnabled=false
         val worker=KotlinAsyncTask<Apcomplex,CharSequence>()
         worker.work={
             try {
@@ -115,6 +116,7 @@ class MainActivity : AppCompatActivity() {
         }
         worker.result={
             result!!.text = it
+            calc!!.isEnabled=true
         }
         worker(currentValue!!())
     }
