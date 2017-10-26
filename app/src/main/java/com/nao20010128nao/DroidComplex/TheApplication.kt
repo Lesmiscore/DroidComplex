@@ -1,6 +1,7 @@
 package com.nao20010128nao.DroidComplex
 
 import android.app.Application
+import com.nao20010128nao.DroidComplex.interpreter.ComplexInterpreter
 import java.lang.ref.WeakReference
 
 /**
@@ -14,5 +15,6 @@ class TheApplication: Application(){
     override fun onCreate() {
         super.onCreate()
         instance= WeakReference(this)
+        ComplexInterpreter.install(this)
     }
 }
