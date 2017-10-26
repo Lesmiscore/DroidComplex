@@ -86,7 +86,8 @@ class MainActivity : AppCompatActivity() {
         worker.work={
             try {
                 val complex = it[0]
-                val tangent= atan(complex)
+                val atan= atan(complex)
+                val abs=ApcomplexMath.abs(complex)
                 val components: MutableList<CharSequence> = ArrayList()
                 components += (resources.getString(R.string.real_part) + ": ").styled(StyleSpan(Typeface.BOLD_ITALIC), ForegroundColorSpan(Color.WHITE))
                 components += complex.real().toStringDisplay()
@@ -95,16 +96,25 @@ class MainActivity : AppCompatActivity() {
                 components += complex.imag().toStringDisplay()
                 components += "\n"
                 components += (resources.getString(R.string.abs_value) + ": ").styled(StyleSpan(Typeface.BOLD_ITALIC), ForegroundColorSpan(Color.WHITE))
-                components += ApcomplexMath.abs(complex).toStringDisplay()
+                components += abs.toStringDisplay()
                 components += "\n"
                 components += (resources.getString(R.string.angle_in_deg) + ": ").styled(StyleSpan(Typeface.BOLD_ITALIC), ForegroundColorSpan(Color.WHITE))
-                components += toDeg(tangent).toStringDisplay()
+                components += toDeg(atan).toStringDisplay()
                 components += "\n"
                 components += (resources.getString(R.string.angle_in_rad) + ": ").styled(StyleSpan(Typeface.BOLD_ITALIC), ForegroundColorSpan(Color.WHITE))
-                components += tangent.toStringDisplay()
+                components += atan.toStringDisplay()
                 components += "\n"
                 components += (resources.getString(R.string.angle_in_rad_div_pi) + ": ").styled(StyleSpan(Typeface.BOLD_ITALIC), ForegroundColorSpan(Color.WHITE))
-                components += (tangent/ CALC_PI).toStringDisplay()
+                components += (atan/ CALC_PI).toStringDisplay()
+                components += "\n"
+                components += (resources.getString(R.string.sin) + ": ").styled(StyleSpan(Typeface.BOLD_ITALIC), ForegroundColorSpan(Color.WHITE))
+                components += (complex.imag()/abs).toStringDisplay()
+                components += "\n"
+                components += (resources.getString(R.string.cos) + ": ").styled(StyleSpan(Typeface.BOLD_ITALIC), ForegroundColorSpan(Color.WHITE))
+                components += (complex.real()/abs).toStringDisplay()
+                components += "\n"
+                components += (resources.getString(R.string.tan) + ": ").styled(StyleSpan(Typeface.BOLD_ITALIC), ForegroundColorSpan(Color.WHITE))
+                components += (complex.imag()/complex.real()).toStringDisplay()
                 components += "\n"
                 "".join(components)
             } catch (e: Throwable) {

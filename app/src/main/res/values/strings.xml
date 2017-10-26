@@ -23,6 +23,9 @@
     <string name="angle_in_deg">ANGLE IN DEGREES</string>
     <string name="angle_in_rad">ANGLE IN RADIANS</string>
     <string name="angle_in_rad_div_pi">ANGLE IN RADIANS DIVIDED BY PI</string>
+    <string name="sin">SINE</string>
+    <string name="cos">COSINE</string>
+    <string name="tan">TANGENT</string>
 
     <string name="error">ERROR</string>
     <string name="menu_look_code">Look at source code</string>
