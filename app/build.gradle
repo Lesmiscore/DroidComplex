@@ -30,6 +30,7 @@ android {
         versionName "1.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         resValue "string", "admobUnitId", "ca-app-pub-3940256099942544/6300978111"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -40,6 +41,9 @@ android {
                 signingConfig signingConfigs.release
             }
         }
+    }
+    lintOptions {
+        abortOnError false
     }
 }
 

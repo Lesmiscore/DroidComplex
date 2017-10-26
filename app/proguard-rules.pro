@@ -31,7 +31,7 @@
 -dontwarn org.w3c.dom.**
 -dontwarn android.**
 -dontwarn javax.lang.model.element.Modifier
--dontwarn java.lang.management.**
+-dontwarn java.**
 
 -keepattributes InnerClasses,EnclosingMethod
 
@@ -52,4 +52,6 @@
 
 -dontwarn org.codehaus.groovy.**
 -dontwarn groovy**
+
+-dontwarn com.nao20010128nao.DroidComplex.interpreter.**
 

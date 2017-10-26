@@ -82,10 +82,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun calculate() {
         calc!!.isEnabled=false
-        val worker=KotlinAsyncTask<Apcomplex,CharSequence>()
+        val worker=KotlinAsyncTask<Unit,CharSequence>()
         worker.work={
             try {
-                val complex = it[0]
+                val complex = currentValue!!()
                 val atan= atan(complex)
                 val abs=ApcomplexMath.abs(complex)
                 val components: MutableList<CharSequence> = ArrayList()
@@ -125,10 +125,10 @@ class MainActivity : AppCompatActivity() {
             }
         }
         worker.result={
-            result!!.text = it
+            result!!.text = it?:resources.getString(R.string.error).styled(ForegroundColorSpan(Color.RED), StyleSpan(Typeface.BOLD))
             calc!!.isEnabled=true
         }
-        worker(currentValue!!())
+        worker()
     }
 
     class RealImagFragment : ComplexInputFragment() {
