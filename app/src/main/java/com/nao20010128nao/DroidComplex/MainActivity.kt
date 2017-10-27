@@ -4,21 +4,24 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.net.Uri
-import android.os.AsyncTask
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.view.ViewPager
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
 import android.view.*
-import android.widget.*
-
-import com.astuetz.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageButton
+import android.widget.TextView
+import com.astuetz.PagerSlidingTabStrip
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
-
-import org.apfloat.*
+import com.nao20010128nao.DroidComplex.interpreter.ComplexInterpreter
+import org.apfloat.Apcomplex
+import org.apfloat.ApcomplexMath
+import org.apfloat.Apfloat
 import java.io.PrintWriter
 import java.io.StringWriter
 
@@ -49,6 +52,7 @@ class MainActivity : AppCompatActivity() {
         adapter.addTab(AbsDegFragment())
         adapter.addTab(AbsRadFragment())
         adapter.addTab(AbsRadPiFragment())
+        adapter.addTab(CodeFragment())
         pager!!.adapter = adapter
         tabs!!.setViewPager(pager!!)
         currentValue = {(adapter.getItem(pager!!.currentItem) as ComplexInputFragment).complex}
@@ -85,7 +89,7 @@ class MainActivity : AppCompatActivity() {
         val worker=KotlinAsyncTask<Unit,CharSequence>()
         worker.work={
             try {
-                val complex = currentValue!!()
+                val complex = currentValue!!().precision(PRECISION)
                 val atan= atan(complex)
                 val abs=ApcomplexMath.abs(complex)
                 val components: MutableList<CharSequence> = ArrayList()
@@ -229,6 +233,37 @@ class MainActivity : AppCompatActivity() {
 
         override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? =
                 inflater!!.inflate(R.layout.complex_abs_rad_pi, container, false)
+    }
+
+    class CodeFragment : ComplexInputFragment() {
+        var code: EditText? = null
+        var detail: ImageButton? = null
+        val interpreter: ComplexInterpreter= ComplexInterpreter.getInstance()
+
+        override val partA: Apfloat
+            get() = Apfloat.ZERO
+
+        override val partB: Apfloat
+            get() = Apfloat.ZERO
+
+        override val complex: Apcomplex
+            get() = interpreter.compile(code!!.text!!.toString()).let{it->
+                if(it.error!=null){
+                    throw it.error
+                }
+                ComplexInterpreter.convert(it.script.run())
+            }
+
+        override val name: String
+            get() = nonNullContext.resources.getString(R.string.code)
+
+        override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+            code = findViewById(R.id.code)
+            detail = findViewById(R.id.detail)
+        }
+
+        override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+                inflater!!.inflate(R.layout.complex_code, container, false)
     }
 
     abstract class ComplexInputFragment : BaseFragment() {

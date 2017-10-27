@@ -6,11 +6,13 @@
     <string name="deg">deg</string>
     <string name="rad">rad</string>
     <string name="rad_div_pi">rad/π</string>
+    <string name="formula">"a little strange formula\nhelp ->"</string>
 
     <string name="real_imag">real/imag</string>
     <string name="abs_deg">abs/deg</string>
     <string name="abs_rad">abs/rad</string>
     <string name="abs_rad_pi">abs/(rad/π)π</string>
+    <string name="code">calculate</string>
 
     <string name="angle_char" translatable="false">∠</string>
     <string name="plus_i" translatable="false">+ i</string>
