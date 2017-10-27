@@ -15,6 +15,6 @@ class TheApplication: Application(){
     override fun onCreate() {
         super.onCreate()
         instance= WeakReference(this)
-        ComplexInterpreter.install(this)
+        ComplexInterpreter.install(this,PRECISION)
     }
 }
