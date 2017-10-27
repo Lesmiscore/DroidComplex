@@ -44,25 +44,19 @@
             android:text="@string/calculate"/>
     </android.support.design.widget.AppBarLayout>
 
-    <LinearLayout
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1">
 
-        <ScrollView
+        <TextView
+            android:id="@+id/complex_data"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/complex_data"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textIsSelectable="true"
-                android:textSize="20sp"/>
-        </ScrollView>
-
-    </LinearLayout>
-
+            android:layout_height="wrap_content"
+            android:textIsSelectable="true"
+            android:textSize="20sp"/>
+    </android.support.v4.widget.NestedScrollView>
+    
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
         android:layout_width="match_parent"
