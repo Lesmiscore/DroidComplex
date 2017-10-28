@@ -1,5 +1,7 @@
 package com.nao20010128nao.DroidComplex
 
+import android.content.Context
+import android.graphics.drawable.Drawable
 import android.support.annotation.IdRes
 import android.support.v4.app.Fragment
 import android.support.v7.widget.Toolbar
@@ -12,6 +14,14 @@ import com.nao20010128nao.DroidComplex.MainActivity.Companion.DISPLAY_PRECISION
 import org.apfloat.Apcomplex
 import org.apfloat.Apfloat
 import java.math.RoundingMode
+import android.support.v4.graphics.drawable.DrawableCompat
+import android.text.Editable
+import android.widget.EditText
+import android.text.Selection.getSelectionEnd
+import android.text.Selection.getSelectionStart
+
+
+
 
 /**
  * Created by lesmi on 17/10/23.
@@ -92,3 +102,18 @@ fun Apfloat.cutDownTo(digits: Int = 10):Apfloat{
         else -> this
     }
 }
+
+fun Drawable.tint(color: Int):Drawable{
+    val d = DrawableCompat.wrap(this)
+    DrawableCompat.setTint(d, color)
+    return d
+}
+
+fun EditText.replaceOrInsertText(to:CharSequence){
+    val start = Math.max(selectionStart, 0)
+    val end = Math.max(selectionEnd, 0)
+    text.replace(Math.min(start, end), Math.max(start, end),
+            to, 0, to.length)
+}
+
+fun CharSequence.toEditable():Editable = SpannableStringBuilder(this)
