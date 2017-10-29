@@ -260,7 +260,7 @@ class MainActivity : AppCompatActivity() {
         override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
             code = findViewById(R.id.code)
             detail = findViewById(R.id.detail)
-            code!!.setOnClickListener{
+            detail!!.setOnClickListener{
                 ComplexCodeInputDialog.startEdit(activity,code!!.text!!.toString()){
                     code!!.text=it.toEditable()
                 }

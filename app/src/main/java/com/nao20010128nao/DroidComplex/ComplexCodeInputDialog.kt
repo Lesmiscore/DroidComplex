@@ -7,11 +7,9 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatDialog
 import android.support.v7.widget.Toolbar
-import android.view.Menu
 import android.view.MenuItem
-import android.view.View
+import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.TextView
 
 /**
  * Created by lesmi on 17/10/28.
@@ -28,6 +26,7 @@ class ComplexCodeInputDialog private constructor(context: Context?) : AppCompatD
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.complex_code_input_dialog)
+        window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT)
         toolbar=findViewById(R.id.toolbar)!!
         code=findViewById(R.id.code)!!
     }
@@ -45,14 +44,8 @@ class ComplexCodeInputDialog private constructor(context: Context?) : AppCompatD
                 it.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
             }
         }
-        toolbar.navigationIcon=ContextCompat.getDrawable(context,R.mipmap.ok).tint(Color.WHITE)
         toolbar.setOnMenuItemClickListener { item->
             when(item.itemId){
-                android.R.id.home-> {
-                    callback(code.text)
-                    dismiss()
-                    true
-                }
                 0->{
                     AlertDialog.Builder(context)
                             .setMessage("TEST")
@@ -72,6 +65,11 @@ class ComplexCodeInputDialog private constructor(context: Context?) : AppCompatD
                 }
                 else->false
             }
+        }
+        toolbar.navigationIcon=ContextCompat.getDrawable(context,R.mipmap.ok).tint(Color.WHITE)
+        toolbar.setNavigationOnClickListener{
+            callback(code.text)
+            dismiss()
         }
     }
 }
